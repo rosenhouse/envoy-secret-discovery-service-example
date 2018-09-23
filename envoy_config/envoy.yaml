@@ -1,0 +1,34 @@
+admin:
+  access_log_path: /dev/null
+  address:
+    socket_address:
+      address: 127.0.0.1
+      port_value: 61003
+
+static_resources:
+  clusters:
+  - name: 0-service-cluster
+    connect_timeout: 0.25s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    hosts:
+    - socket_address:
+        address: 10.255.217.83
+        port_value: 8080
+    circuit_breakers:
+      thresholds:
+      - max_connections: 4294967295
+  - name: 1-service-cluster
+    connect_timeout: 0.25s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    hosts:
+    - socket_address:
+        address: 10.255.217.83
+        port_value: 2222
+    circuit_breakers:
+      thresholds:
+      - max_connections: 4294967295
+dynamic_resources:
+  lds_config:
+    path: /etc/cf-assets/envoy_config/listeners.yaml
