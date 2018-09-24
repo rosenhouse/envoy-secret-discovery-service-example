@@ -29,6 +29,15 @@ static_resources:
     circuit_breakers:
       thresholds:
       - max_connections: 4294967295
+  - name: pilot-ads
+    connect_timeout: 0.25s
+    type: STATIC
+    lb_policy: ROUND_ROBIN
+    hosts:
+    - socket_address:
+        address: 10.255.217.2
+        port_value: 15010
+    http2_protocol_options: {}
 
   listeners:
   - name: listener-8080
@@ -79,3 +88,14 @@ static_resources:
             sds_config:
               path: /etc/cf-assets/envoy_config/sds-server-validation-context.yaml
         require_client_certificate: true
+
+dynamic_resources:
+  lds_config:
+    ads: {}
+  cds_config:
+    ads: {}
+  ads_config:
+    api_type: GRPC
+    grpc_services:
+      envoy_grpc:
+        cluster_name: pilot-ads
