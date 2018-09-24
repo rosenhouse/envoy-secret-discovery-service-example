@@ -1,0 +1,29 @@
+version_info: "0"
+resources:
+- '@type': type.googleapis.com/envoy.api.v2.auth.Secret
+  name: server-validation-context
+  validation_context:
+    trusted_ca:
+      inline_string: |
+        -----BEGIN CERTIFICATE-----
+        MIIDPjCCAiagAwIBAgIUOL0hUKc/ePxVvoQGa+qkMiwnKsAwDQYJKoZIhvcNAQEL
+        BQAwFTETMBEGA1UEAxMKaW50ZXJuYWxDQTAeFw0xODA3MzExNzE1MDNaFw0xOTA3
+        MzExNzE1MDNaMBUxEzARBgNVBAMTCmludGVybmFsQ0EwggEiMA0GCSqGSIb3DQEB
+        AQUAA4IBDwAwggEKAoIBAQDur2snXnaqFNy+Wd/y3YfuzEJ8nTWJeYmhHC7/Hv9c
+        Mv4LgESx7kPsoXH2NIKWE+SFs9xn7NUsmeKhuTHKrzQNaKUHMVzV0TWTT+hFyvv1
+        Vx/v4iKL6xYfEvvAxygLUimyw8+S9JqdtshfC+19XENt05vJFhuLelawCZJqfJEL
+        trXKaqnOjTMyjeTV0K3WiCG+fMibIAJZn1qMJwHC28BZZJielUMkTHFNxVkT8zfe
+        a+QCEhH2oGg7iEgmRiVl3PSrPMB9S8EkFI6Yg1A27UwwlB3JDO1oZ/EaUSLm8c1v
+        EVFVcG30PbD3+cUS4ItWvVFXbi5R339UgFtJSB+9cIOzAgMBAAGjgYUwgYIwHQYD
+        VR0OBBYEFE24LQ1GKFhLLmlC6aAM8U924UG8MFAGA1UdIwRJMEeAFE24LQ1GKFhL
+        LmlC6aAM8U924UG8oRmkFzAVMRMwEQYDVQQDEwppbnRlcm5hbENBghQ4vSFQpz94
+        /FW+hAZr6qQyLCcqwDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IB
+        AQAUPCB/txXiU5C38/DXfxNpqNrO2ghIZtOwLFZ+fh7GlPky/KLwJedFKBwc2MAM
+        xA/7xJ2Tb7ZBrMmr7q3Ij3ziboj3kj5x16x/nlOj226RH3mNRiGQae3jtDJNz3pN
+        gvcxxTZ7TC2IdW4cOH+K4uPiPHFMkVtMF53On4/mBrpEuiSmwuFQPoSW6TvdmpJu
+        08/Mi3l4J4ACUfxUF+xS4wljXY/cKPIFyiNN2R3+mrf4gP97Q2/uyN1QLCWtXLwm
+        IPjB4xk+OKOkD9xmZ4d9YpgoSRp4kLhqH2R94PaSPrq/sjXPAkTJhwME+rJkKdaV
+        7R/U10B7JScKsYe50273WkQ4
+        -----END CERTIFICATE-----
+    verify_subject_alt_name:
+    - gorouter.service.cf.internal
